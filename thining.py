@@ -9,7 +9,10 @@ import os
 from utils import flatten, transpose
 
 usage = False
-
+print("==========================")
+print("Edited by Alirove(090) gan")
+print("==========================")
+print("")
 def apply_structure(pixels, structure, result):
     global usage
     usage = False
@@ -35,7 +38,7 @@ def apply_all_structures(pixels, structures):
 def make_thin(im):
     loaded = utils.load_image(im)
     utils.apply_to_each_pixel(loaded, lambda x: 0.0 if x > 10 else 1.0)
-    print "loading phase done"
+    print ("loading phase done")
 
     t1 = [[1, 1, 1], [0, 1, 0], [0.1, 0.1, 0.1]]
     t2 = utils.transpose(t1)
@@ -51,9 +54,9 @@ def make_thin(im):
     usage = True
     while(usage):
         usage = apply_all_structures(loaded, thinners)
-        print "single thining phase done"
+        print ("single thining phase done")
 
-    print "thining done"
+    print ("thining done")
 
     utils.apply_to_each_pixel(loaded, lambda x: 255.0 * (1 - x))
     utils.load_pixels(im, loaded)
@@ -79,3 +82,5 @@ if __name__ == "__main__":
     if args.save:
         base_image_name = os.path.splitext(os.path.basename(args.image[0]))[0]
         im.save(base_image_name + "_thinned.gif", "GIF")
+		
+# BTW gak ada yang diubah

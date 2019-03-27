@@ -6,6 +6,10 @@ import math
 import sobel
 import copy
 
+# ==========================
+# Edited by Alirove(090) gan
+# ==========================
+
 def apply_kernel_at(get_value, kernel, i, j):
     kernel_size = len(kernel)
     result = 0
@@ -108,7 +112,7 @@ def load_pixels(im, pixels):
 
     for i in range(0, x):
         for j in range(0, y):
-            im_load[i, j] = pixels[i][j]
+            im_load[i, j] = int(pixels[i][j]) # Sini gan yang diubah
 
 def get_line_ends(i, j, W, tang):
     if -1 <= tang and tang <= 1:

@@ -8,6 +8,10 @@ import math
 import frequency
 import os
 
+print("==========================")
+print("Edited by Alirove(090) gan")
+print("==========================")
+print("")
 def gabor_kernel(W, angle, freq):
     cos = math.cos(angle)
     sin = math.sin(angle)
@@ -28,7 +32,7 @@ def gabor(im, W, angles):
     im_load = im.load()
 
     freqs = frequency.freq(im, W, angles)
-    print "computing local ridge frequency done"
+    print ("computing local ridge frequency done")
 
     gauss = utils.gauss_kernel(3)
     utils.apply_kernel(freqs, gauss)
@@ -38,11 +42,11 @@ def gabor(im, W, angles):
             kernel = gabor_kernel(W, angles[i][j], freqs[i][j])
             for k in range(0, W):
                 for l in range(0, W):
-                    im_load[i * W + k, j * W + l] = utils.apply_kernel_at(
+                    im_load[i * W + k, j * W + l] = int(utils.apply_kernel_at( # Yang diubah
                         lambda x, y: im_load[x, y],
                         kernel,
                         i * W + k,
-                        j * W + l)
+                        j * W + l)) # Sampai sini
 
     return im
 
@@ -63,10 +67,10 @@ if __name__ == "__main__":
     g = lambda x, y: x ** 2 - y ** 2
 
     angles = utils.calculate_angles(im, W, f, g)
-    print "calculating orientation done"
+    print ("calculating orientation done")
 
     angles = utils.smooth_angles(angles)
-    print "smoothing angles done"
+    print ("smoothing angles done")
 
     result = gabor(im, W, angles)
     result.show()
